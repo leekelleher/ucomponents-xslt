@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<umbPackage>
+	<files />
+	<info>
+		<package>
+			<name>uComponents: XSLT Templates</name>
+			<version>1.0</version>
+			<license url="http://www.opensource.org/licenses/mit-license.php">MIT License</license>
+			<url>http://xsltrebelalliance.com/</url>
+			<requirements>
+				<major>4</major>
+				<minor>5</minor>
+				<patch>2</patch>
+			</requirements>
+		</package>
+		<author>
+			<name>Lee Kelleher, Chriztian Steinmeier</name>
+			<website>http://xsltrebelalliance.com/</website>
+		</author>
+		<readme><![CDATA[]]></readme>
+	</info>
+	<DocumentTypes />
+	<Templates />
+	<Stylesheets />
+	<Macros />
+	<DictionaryItems />
+	<Languages />
+	<DataTypes />
+	<Actions />
+</umbPackage>

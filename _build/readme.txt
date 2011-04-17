@@ -1,4 +1,4 @@
-# uComponents: XSLT Templates
+﻿uComponents: XSLT Templates
 
 The aim of this project is to provide example XSLT templates to support the uComponents package for Umbraco.
 

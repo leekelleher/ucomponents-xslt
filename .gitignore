@@ -1,0 +1,13 @@
+# Visual Studio files #
+#######################
+*.suo
+*.csproj.user
+*/bin/*
+*/obj/*
+
+# OS generated files #
+######################
+.DS_Store?
+ehthumbs.db
+Icon?
+Thumbs.db
