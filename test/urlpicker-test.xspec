@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<x:description
+	stylesheet="../uComponents.XsltTemplates/urlpicker-helper.xslt"
+	xslt-version="1.0"
+	xmlns:x="http://www.jenitennison.com/xslt/xspec"
+>
+	<x:scenario label="when processing an empty url-picker">
+		<x:context>
+			<url-picker mode="URL">
+				<url></url>
+				<node-id></node-id>
+				<new-window></new-window>
+				<link-title></link-title>
+			</url-picker>
+		</x:context>
+		<x:expect label="it should produce no output" select="()" />
+	</x:scenario>
+
+</x:description>
