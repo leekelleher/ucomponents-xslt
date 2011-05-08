@@ -23,7 +23,7 @@
 		<MakeDir Directories="$(BuildDir)" />
 	</Target>
 
-	<!-- PREPAIRE FILES -->
+	<!-- PREPARE FILES -->
 	<Target Name="PrepairFiles" DependsOnTargets="Clean">
 		<ItemGroup>
 			<XsltFiles Include="$(RootDir)\*.xslt" Exclude="$(RootDir)\_ucomponents.xslt" />
