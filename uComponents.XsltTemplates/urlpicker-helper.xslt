@@ -17,22 +17,37 @@
 		Note: These templates just create the *attributes* (href, title and target). This is so you can
 		provide the link text and any other attributes (like class="" or rel="") if you need to.
 
+		If you use the Multi-URL Picker, you won't need a wrapper - you'll get a nice <ul> with a link
+		for every picker that was added to it. It'll use the contents of the link-title for the link text. 
+		
 -->
-
 <xsl:stylesheet
 	version="1.0"
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 >
 
-	<xsl:output method="xml" indent="yes" omit-xml-declaration="yes" />
-
+	<xsl:output method="html" indent="yes" omit-xml-declaration="yes" />
+	
 	
 	<xsl:template match="*" mode="urlpicker">
 		<xsl:apply-templates select="url-picker[normalize-space(url)]" />
 	</xsl:template>
+	
+	<xsl:template match="*[multi-url-picker]" mode="urlpicker">
+		<ul>
+			<xsl:for-each select="multi-url-picker/url-picker">
+				<li>
+					<a>
+						<xsl:apply-templates select="." />
+						<xsl:value-of select="link-title" />
+					</a>
+				</li>
+			</xsl:for-each>
+		</ul>
+	</xsl:template>
 
 	<!-- Handles Content and URL mode -->
-	<xsl:template match="url-picker[@mode = 'Content' or @mode = 'URL']">
+	<xsl:template match="url-picker">
 		<!-- If no URL was generated, don't build an href attribute -->
 		<xsl:apply-templates select="url[normalize-space()]" />
 		
@@ -59,7 +74,7 @@
 
 	<xsl:template match="url-picker/new-window">
 		<xsl:attribute name="target">
-			<xsl:value-of select="_blank" />
+			<xsl:value-of select="'_blank'" />
 		</xsl:attribute>
 	</xsl:template>
 

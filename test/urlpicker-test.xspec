@@ -15,5 +15,32 @@
 		</x:context>
 		<x:expect label="it should produce no output" select="()" />
 	</x:scenario>
+	
+	<x:scenario label="when processing a multi-url-picker property">
+		<x:context mode="urlpicker">
+			<linksSection>
+				<multi-url-picker>
+					<url-picker mode="URL">
+						<url>http://xsltrebelalliance.com</url>
+						<node-id />
+						<new-window>True</new-window>
+						<link-title>XSLT Rebel Alliance</link-title>
+					</url-picker>
+					<url-picker mode="Content">
+						<url>/start-here</url>
+						<node-id>1202</node-id>
+						<new-window>False</new-window>
+						<link-title>Go to the Frontpage</link-title>
+					</url-picker>
+				</multi-url-picker>
+			</linksSection>
+		</x:context>
+		<x:expect label="it should produce a list of two items">
+			<ul>
+				<li><a href="http://xsltrebelalliance.com" title="XSLT Rebel Alliance" target="_blank">XSLT Rebel Alliance</a></li>
+				<li><a href="/start-here" title="Go to the Frontpage">Go to the Frontpage</a></li>
+			</ul>
+		</x:expect>
+	</x:scenario>
 
 </x:description>
