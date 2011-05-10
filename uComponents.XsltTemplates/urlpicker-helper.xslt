@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE xsl:stylesheet [
+	<!ENTITY NiceUrl "string">
+]>
 <!-- 
 	urlpicker-helper.xslt
 	ucomponents-xslt
@@ -24,10 +27,11 @@
 <xsl:stylesheet
 	version="1.0"
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+	xmlns:umb="urn:umbraco.library"
+	exclude-result-prefixes="umb"
 >
 
 	<xsl:output method="html" indent="yes" omit-xml-declaration="yes" />
-	
 	
 	<xsl:template match="*" mode="urlpicker">
 		<xsl:apply-templates select="url-picker[normalize-space(url)]" />
@@ -46,10 +50,10 @@
 		</ul>
 	</xsl:template>
 
-	<!-- Handles Content and URL mode -->
 	<xsl:template match="url-picker">
-		<!-- If no URL was generated, don't build an href attribute -->
-		<xsl:apply-templates select="url[normalize-space()]" />
+		<!-- 'Mutually Exclusive' hack - use <node-id> OR <url> -->
+		<xsl:apply-templates select="self::url-picker[@mode = 'Content']/node-id[normalize-space()]" />
+		<xsl:apply-templates select="self::url-picker[not(@mode = 'Content')]/url[normalize-space()]" />
 		
 		<!-- If a title was specified, generate a title attribute -->
 		<xsl:apply-templates select="link-title[normalize-space()]" />
@@ -58,11 +62,19 @@
 		<xsl:apply-templates select="new-window[. = 'True']" />
 	</xsl:template>
 	
-	<!-- TODO: templates for mode="Media" and mode="Upload" -->
-	
+	<!--
+		The following templates are scoped to the url-picker to ensure that they won't conflict
+		with any other included templates
+	-->
 	<xsl:template match="url-picker/url">
 		<xsl:attribute name="href">
 			<xsl:value-of select="." />
+		</xsl:attribute>
+	</xsl:template>
+	
+	<xsl:template match="url-picker/node-id">
+		<xsl:attribute name="href">
+			<xsl:value-of select="&NiceUrl;(.)" />
 		</xsl:attribute>
 	</xsl:template>
 
@@ -73,9 +85,7 @@
 	</xsl:template>
 
 	<xsl:template match="url-picker/new-window">
-		<xsl:attribute name="target">
-			<xsl:value-of select="'_blank'" />
-		</xsl:attribute>
+		<xsl:attribute name="target">_blank</xsl:attribute>
 	</xsl:template>
 
 </xsl:stylesheet>
