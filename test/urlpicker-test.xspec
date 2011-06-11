@@ -56,5 +56,19 @@
 			<temp href="1202" title="Go to the Frontpage" />
 		</x:expect>
 	</x:scenario>
+	
+	<x:scenario label="if link-title is empty">
+		<x:context>
+			<url-picker mode="Content">
+				<url>/start-here</url>
+				<node-id>1202</node-id>
+				<new-window>False</new-window>
+				<link-title></link-title>
+			</url-picker>
+		</x:context>
+		<x:expect label="it should not produce a title attribute" select="temp/@*">
+			<temp href="1202" />
+		</x:expect>
+	</x:scenario>
 
 </x:description>
