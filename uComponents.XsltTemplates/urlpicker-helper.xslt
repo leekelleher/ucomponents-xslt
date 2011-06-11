@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!DOCTYPE xsl:stylesheet [
-	<!ENTITY NiceUrl "string">
+	<!ENTITY NiceUrl "umb:NiceUrl">
+	<!ENTITY empty "not(normalize-space())">
+	<!ENTITY TRUE ". = 'True'">
 ]>
 <!-- 
 	urlpicker-helper.xslt
@@ -52,14 +54,14 @@
 
 	<xsl:template match="url-picker">
 		<!-- 'Mutually Exclusive' hack - use <node-id> OR <url> -->
-		<xsl:apply-templates select="self::url-picker[@mode = 'Content']/node-id[normalize-space()]" />
-		<xsl:apply-templates select="self::url-picker[not(@mode = 'Content')]/url[normalize-space()]" />
+		<xsl:apply-templates select="self::url-picker[@mode = 'Content']/node-id" />
+		<xsl:apply-templates select="self::url-picker[not(@mode = 'Content')]/url" />
 		
 		<!-- If a title was specified, generate a title attribute -->
-		<xsl:apply-templates select="link-title[normalize-space()]" />
+		<xsl:apply-templates select="link-title" />
 		
 		<!-- Only need to cater for the ones that have the value True in here -->
-		<xsl:apply-templates select="new-window[. = 'True']" />
+		<xsl:apply-templates select="new-window[&TRUE;]" />
 	</xsl:template>
 	
 	<!--
@@ -87,5 +89,8 @@
 	<xsl:template match="url-picker/new-window">
 		<xsl:attribute name="target">_blank</xsl:attribute>
 	</xsl:template>
+	
+	<!-- Suppress empty elements -->
+	<xsl:template match="url-picker/*[&empty;]" />
 
 </xsl:stylesheet>
