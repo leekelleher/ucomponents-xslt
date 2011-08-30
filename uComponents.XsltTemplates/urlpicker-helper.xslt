@@ -91,6 +91,6 @@
 	</xsl:template>
 	
 	<!-- Suppress empty elements -->
-	<xsl:template match="url-picker/*[&empty;]" />
+	<xsl:template match="url-picker/*[&empty;]" priority="1" />
 
 </xsl:stylesheet>
