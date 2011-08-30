@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<x:description
+	stylesheet="../uComponents.XsltTemplates/multiline-helper.xslt"
+	xslt-version="1.0"
+	xmlns:x="http://www.jenitennison.com/xslt/xspec"
+>
+	<x:scenario label="when processing an empty property">
+		<x:context>
+			<values></values>
+		</x:context>
+		<x:expect label="it should produce no output" select="()" />
+	</x:scenario>
+	
+	<x:scenario label="when processing a property with a single line">
+		<x:context mode="multiline">
+			<email>
+				<values>
+					<value>Line 1</value>
+				</values>
+			</email>
+		</x:context>
+		<x:expect label="it should produce a single paragraph with the contents of the property">
+			<p>Line 1</p>
+		</x:expect>
+	</x:scenario>
+	
+	<x:scenario label="when processing a property with multiple lines">
+		<x:context mode="multiline">
+			<address>
+				<values>
+					<value>Line 1</value>
+					<value>Line 2</value>
+					<value>Line 3</value>
+					<value>Line 4</value>
+				</values>
+			</address>
+		</x:context>
+		<x:expect label="it should produce a paragraph for every line">
+			<p>Line 1</p>
+			<p>...</p>
+			<p>...</p>
+			<p>...</p>
+		</x:expect>
+	</x:scenario>
+	
+	<x:scenario label="when processing a property containing a mix of empty and non-empty lines">
+		<x:context mode="multiline">
+			<address>
+				<values>
+					<value>Line 1</value>
+					<value>Line 2</value>
+					<value></value>
+					<value>Line 4</value>
+					<value></value>
+				</values>
+			</address>
+		</x:context>
+		<x:expect label="it should ignore the empty lines">
+			<p>Line 1</p>
+			<p>Line 2</p>
+			<p>Line 4</p>
+		</x:expect>
+	</x:scenario>
+
+</x:description>

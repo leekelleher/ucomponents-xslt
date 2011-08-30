@@ -8,7 +8,7 @@
 	urlpicker-helper.xslt
 	ucomponents-xslt
 
-	Helper templates for rendering the uComponents URL Picker DataType
+	Helper templates for rendering the uComponents "URL Picker" datatype
 
 	Usage:
 		Include this file in any XSLT file using <xsl:include href="urlpicker-helper.xslt" /> and in your
