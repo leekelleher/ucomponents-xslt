@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<x:description
+	stylesheet="ucom-helpers.xslt"
+	xslt-version="1.0"
+	xmlns:x="http://www.jenitennison.com/xslt/xspec"
+>
+	<x:import href="urlpicker-test.xspec" />
+	<x:import href="multiple-textstring-test.xspec" />
+
+</x:description>
