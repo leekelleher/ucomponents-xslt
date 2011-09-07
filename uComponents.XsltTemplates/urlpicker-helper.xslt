@@ -33,8 +33,6 @@
 	exclude-result-prefixes="umb"
 >
 
-	<xsl:output method="html" indent="yes" omit-xml-declaration="yes" />
-	
 	<xsl:template match="*" mode="urlpicker">
 		<xsl:apply-templates select="url-picker[normalize-space(url)]" />
 	</xsl:template>

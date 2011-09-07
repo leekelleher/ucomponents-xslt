@@ -24,8 +24,6 @@
 	exclude-result-prefixes="umb"
 >
 
-	<xsl:output method="html" indent="yes" omit-xml-declaration="yes" />
-	
 	<xsl:template match="*" mode="multiline">
 		<xsl:apply-templates select="values/value" />
 	</xsl:template>
