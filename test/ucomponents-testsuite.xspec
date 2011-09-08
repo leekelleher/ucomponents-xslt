@@ -6,5 +6,7 @@
 >
 	<x:import href="urlpicker-test.xspec" />
 	<x:import href="multiple-textstring-test.xspec" />
+	<x:import href="multipicker-test.xspec" />
+	
 
 </x:description>
