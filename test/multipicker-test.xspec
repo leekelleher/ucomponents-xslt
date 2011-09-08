@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<x:description
+	stylesheet="ucom-helpers.xslt"
+	xslt-version="1.0"
+	xmlns:x="http://www.jenitennison.com/xslt/xspec"
+>
+	<x:scenario label="when processing an empty MNTP property">
+		<x:context mode="multipicker">
+			<relatedLinks>
+				<MultiNodePicker>
+				</MultiNodePicker>
+			</relatedLinks>
+		</x:context>
+		<x:expect label="it should not produce any output" test="()" />
+	</x:scenario>
+	
+	<x:scenario label="when processing the MNTP fixture">
+		<x:context src="fixtures/mntp-doc.xml" select="/root/Doc[1]/mntpProperty" mode="multipicker" />
+		<x:expect label="it should produce a list of 4 nodes in sequential order">
+			<p>Node 1</p>
+			<p>Node 2</p>
+			<p>Node 3</p>
+			<p>Node 4</p>
+		</x:expect>
+	</x:scenario>
+
+
+</x:description>
