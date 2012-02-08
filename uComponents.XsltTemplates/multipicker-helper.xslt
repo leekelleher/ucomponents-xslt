@@ -28,20 +28,21 @@
 	<!--
 		This does the equivalent of calling the key() function for every <nodeId>,
 		collecting the resulting documents into a node-set.
-		
+
 		Ideally we could just apply templates to that set, but unfortunately the nodes
-		will be processed in document order...
-		
-		So, would be cool to just be able to do this:
+		will be processed in document order, so we need to somehow use the position of
+		the nodeId elements as the sort order.
 	-->
-		<!-- <xsl:apply-templates select="key($key, nodeId)" /> -->
-		
-		<!-- Workaround for the above - still only accessing the lookup table once -->
+		<!-- Grab all the selected nodes using the key -->
 		<xsl:variable name="nodes" select="key($key, nodeId)" />
 
-		<xsl:for-each select="nodeId">
-			<xsl:apply-templates select="$nodes[@id = current()]" />
-		</xsl:for-each>
+		<!-- We need a reference back to the nodeId elements, so collect them -->
+		<xsl:variable name="nodeIds" select="nodeId" />
+		
+		<!-- We can't use position like this: $nodeIds[. current()/@id]/position(), so instead count the number of preceding siblings -->
+		<xsl:apply-templates select="$nodes">
+			<xsl:sort select="count($nodeIds[. = current()/@id]/preceding-sibling::nodeId)" data-type="number" order="ascending" />
+		</xsl:apply-templates>
 		
 	</xsl:template>
 
