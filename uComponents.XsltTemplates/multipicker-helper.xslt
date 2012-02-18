@@ -26,7 +26,7 @@
 
 	<xsl:key name="document-by-id" match="*[@isDoc]" use="@id" />
 
-	<xsl:template match="MultiNodePicker | XPathCheckBoxList | CheckBoxTree" mode="multipicker">
+	<xsl:template match="MultiNodePicker | XPathCheckBoxList | CheckBoxTree" mode="multipicker">
 		<!-- Make possible to override the key used to retrieve nodes -->
 		<xsl:param name="key" select="'document-by-id'" />
 		
