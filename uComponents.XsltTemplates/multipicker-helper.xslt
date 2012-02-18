@@ -3,14 +3,15 @@
 	multipicker-helper.xslt
 	ucomponents-xslt
 
-	Helper templates for rendering the uComponents "Multi-Node Tree Picker" datatype
-
+	Helper templates for rendering the uComponents "Multi-Node Tree Picker" and "XPath CheckBox List" datatypes.
+	
 	Usage:
 		Include this file in any XSLT file using <xsl:include href="multipicker-helper.xslt" /> and in your
-		main XSLT file just apply templates to any MNTP property you want to render, like this: 
+		main XSLT file just apply templates to any MNTP or XPathCheckBoxList property you want to render, like this: 
 		
 		<xsl:apply-templates select="propertyName" mode="multipicker" />
 		
+		(Requires using "XML" as Storage Type and "Node Ids" as Values if applicable.)
 -->
 <xsl:stylesheet
 	version="1.0"
@@ -21,7 +22,7 @@
 
 	<xsl:key name="document-by-id" match="*[@isDoc]" use="@id" />
 
-	<xsl:template match="MultiNodePicker" mode="multipicker">
+	<xsl:template match="MultiNodePicker | XPathCheckBoxList" mode="multipicker">
 		<!-- Make possible to override the key used to retrieve nodes -->
 		<xsl:param name="key" select="'document-by-id'" />
 		
