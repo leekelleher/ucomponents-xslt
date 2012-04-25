@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!DOCTYPE xsl:stylesheet [
-	<!ENTITY NiceUrl "string">
+	<!ENTITY NiceUrl "umb:NiceUrl">
 	<!ENTITY empty "not(normalize-space())">
 	<!ENTITY TRUE ". = 'True'">
 ]>
