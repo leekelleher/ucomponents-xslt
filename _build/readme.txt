@@ -5,5 +5,8 @@ The aim of this project is to provide example XSLT templates to support the uCom
 We will provide example XSLT templates for the following components:
 
 * Multi-node Tree Picker
+* XPath CheckBoxList (as part of the above MNTP helper)
+* CheckBoxTree (also by way of the MNTP)
 * UrlPicker (and Multi-UrlPicker)
-* XPath CheckboxList and XPath DropdownList
+* Multiple Textstring
+* Textstring Array
