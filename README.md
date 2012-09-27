@@ -10,3 +10,4 @@ Helpers are available for the following datatypes already:
 * CheckBoxTree (also by way of the MNTP)
 * UrlPicker (and Multi-UrlPicker)
 * Multiple Textstring
+* Textstring Array
