@@ -7,6 +7,7 @@
 		* Multi-Node Tree Picker
 		* XPath CheckBox List
 		* CheckBoxTree
+		* WidgetGrid (separate package from Matt Brailsford)
 		
 	- when using "XML" as Storage Type and "Node Ids" as Values (if applicable).
 	
@@ -26,7 +27,7 @@
 
 	<xsl:key name="document-by-id" match="*[@isDoc]" use="@id" />
 
-	<xsl:template match="MultiNodePicker | XPathCheckBoxList | CheckBoxTree" mode="multipicker">
+	<xsl:template match="MultiNodePicker | XPathCheckBoxList | CheckBoxTree | WidgetGrid/*[nodeId]" mode="multipicker">
 		<!-- Make possible to override the key used to retrieve nodes -->
 		<xsl:param name="key" select="'document-by-id'" />
 		
