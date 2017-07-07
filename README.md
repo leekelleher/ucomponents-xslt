@@ -1,5 +1,7 @@
 # uComponents: XSLT Templates
 
+[![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
+
 The aim of this project is to provide example XSLT templates to support the uComponents package for Umbraco.
 We will provide example XSLT templates for the components wherever it makes sense.
 
